@@ -15,7 +15,9 @@ title: "Machine Learning class (add class code): Homework 1 Report"
 #      email: \texttt{elacruzca@unal.edu.co}
 
 abstract: |
-  Add an abstract here, after "everything" is finished
+  In this work I present the solution to homework 1 for the class of machine learning
+  (\todo{add class code}). I explore all the details and many of the ideas I had while
+  trying to find a good classifier for the dataset given.
 
 ...
 

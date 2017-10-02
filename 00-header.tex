@@ -6,4 +6,10 @@
             linkcolor=magenta}
 \usepackage{fontspec}
 \usepackage{setspace}
+\usepackage[textsize=tiny,%
+            bordercolor=yellow,%
+            color=yellow,
+            textwidth=4cm]{todonotes}
 %\setmainfont{Noto Serif}
+
+\newcommand{\inlinetodo}[1]{\todo[inline,size=\normalsize]{#1}}
