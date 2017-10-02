@@ -12,45 +12,38 @@ TEX_HEADER='00-header.tex'
 #PANDOC_TEMPLATE = 'pandoc_templates/ieee-pandoc-template/template.latex'
 CONFIG_FILES = FileList[TEX_HEADER, BIB_LIB] #, CSL, PANDOC_HEADER, PANDOC_TEMPLATE]
 
+pandoc_comm = (
+  "pandoc" +
+  " --template acmart.latex" +
+  " --standalone" +
+  " --latex-engine lualatex" +
+  " -H #{TEX_HEADER}" +
+  #" --biblatex" +
+  #" --bibliography '#{BIB_LIB}'" +
+  #" -M citeproc-preamble=#{CITEPROC_PREAMBLE}" +
+  #" --filter pandoc-citeproc" +
+  #" --filter pandoc-citeproc-preamble" +
+  #" --csl '#{CSL}'" +
+  #" --template '#{PANDOC_TEMPLATE}'" +
+  " -f markdown" +
+  " #{MD_FILES.map {|f| "'#{f}'"} .join(' ')}"
+)
+
 #"rules to generate the pdf"
 file OUT_PDF => (MD_FILES+CONFIG_FILES) do
   puts 'running pandoc...'
-  %x{ pandoc \
-        --standalone \
-        --latex-engine lualatex \
-        -H #{TEX_HEADER} \
-        --biblatex \
-        --bibliography "#{BIB_LIB}" \
-        -f markdown \
-        #{MD_FILES.map {|f| "\"#{f}\""} .join(" ")} \
-        -o "#{OUT_PDF}"
-  }
-        #-M citeproc-preamble=#{CITEPROC_PREAMBLE} \
-        #--filter pandoc-citeproc \
-        #--filter pandoc-citeproc-preamble \
-        #--csl "#{CSL}" \
-        #--template "#{PANDOC_TEMPLATE}" \
+  pandoc = "#{pandoc_comm} -o '#{OUT_PDF}'"
+  puts pandoc
+  system pandoc
   puts "DONE"
 end
 
 #"rules to generate the LaTeX file"
 file OUT_TEX => (MD_FILES+CONFIG_FILES) do
   puts 'running pandoc...'
-  %x{ pandoc \
-        --standalone \
-        --latex-engine lualatex \
-        -H #{TEX_HEADER} \
-        --biblatex \
-        --bibliography "#{BIB_LIB}" \
-        -f markdown \
-        #{MD_FILES.map {|f| "\"#{f}\""} .join(" ")} \
-        -o "#{OUT_TEX}"
-  }
-        #-M citeproc-preamble=#{CITEPROC_PREAMBLE} \
-        #--filter pandoc-citeproc \
-        #--filter pandoc-citeproc-preamble \
-        #--csl "#{CSL}" \
-        #--template "#{PANDOC_TEMPLATE}" \
+  pandoc = "#{pandoc_comm} -o '#{OUT_TEX}'"
+  puts pandoc
+  system pandoc
   puts "DONE"
 end
 

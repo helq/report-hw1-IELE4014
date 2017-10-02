@@ -39,10 +39,10 @@ information for the nns to learn-->
   little change prevented log to receive 0 as value and allowed me to continue with the
   training process without much trouble.
 
-The discrete features in the dataset "time_signature" and "key" were converted into a
-one-hot-vector representations. "time_signature" has 8 (from 0 to 7) possible values while
-"key" has 12 (from 0 to 11) possible values. The resulting vector of discrete features for
-each datapoint has size 21 (8 + 12 + 1, 1 value for the "mode" binary feature). For each
+The discrete features in the dataset `time_signature` and `key` were converted into a
+one-hot-vector representations. `time_signature` has 8 (from 0 to 7) possible values while
+`key` has 12 (from 0 to 11) possible values. The resulting vector of discrete features for
+each datapoint has size 21 (8 + 12 + 1, 1 value for the `mode` binary feature). For each
 of the 27 continuous features an additional feature was created, the additional features
 were the result of applying log to each column. A normalization step was performed for
 each of the 54 continuous resulting features. The total of features used per datapoint
@@ -50,7 +50,7 @@ was 75 (21 discrete and 54 continuous).
 
 ## Training, Testing and Validation datasets ##
 
-The original 9269 datapoints where distributed randomly in:
+The original 9269 datapoints were distributed randomly in:
 
 - Test set. Size 1390, 15% of 9269
 - and, Training set. Size 7879, 85% remaining of 9269
