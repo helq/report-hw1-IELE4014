@@ -79,7 +79,7 @@ the hidden layer network. Proposed models:
   hidden layers 1, 2 and 3, respectively.
 
 ![Special NN, with two hidden layers, one of them is broken into two pieces each one in
-charge of learning one set of features different, discrete and continuous
+charge of learning one set of different features, discrete and continuous
 features\label{zipNet}](imgs/zipNet.pdf)
 
 <!-- vim:set filetype=markdown.pandoc : -->
