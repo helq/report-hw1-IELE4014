@@ -2,18 +2,17 @@
 
 In early attempts, I tried to train the network without preprocessing at all, and the net
 was not able to learn anything, or at least, nothing fast enough. As it can be seen in the
-figure \todo{add figure number} the training error never got below 40%, even after 10000
-training epochs. The gradient, as can be seen in the figure \todo{add second fig}, was very
-small, but the optimization error (see figure \todo{add figure with trainCE}) got
-nontheless small as time went on, suggesting that the net was indeed learning but it was
-in a region of the optimization space where the gradient was very small.
+figure \ref{im01} the training error never got below 40%, even after 10000 training
+epochs. The gradient, as can be seen in the figure \ref{im02}, was very small, but the
+optimization error (see figure \ref{im03}) got nontheless small as time went on,
+suggesting that the net was indeed learning but it was in a region of the optimization
+space where the gradient was very small.
 
-\missingfigure{Show error rate not going down when preprocessing is deactivated}
+![Training and test errors don't really seem to be improving at all\label{im01}](imgs/im01.eps)
 
-\missingfigure{Shor how the gradient didn't change much and got pretty damn low}
+![The gradient of training the NN shows how it is actually learning, but very slowly\label{im02}](imgs/im02.eps)
 
-\missingfigure{show trainCE of net to show that it was indeed learning, optimizing,
-optimization the optimization function use was $(prediction-label)^2$}
+![The optimization/training error decreases with time, but it is painfully slow\label{im03}](imgs/im03.eps)
 
 I decided to normalize each column of the input data using the student's
 t-statistic[^statwiki] and found that the optimization process converged fast to a value
@@ -60,14 +59,21 @@ the problem, and a (not so) descent precision error. I refer here about precisio
 context of Chernoff bounds. Remember that the additive form of the Chernoff bounds are
 given by the equation:
 
-\inlinetodo{Add chernoff equation}
+$$ P\left[\frac{1}{n} \sum_{j=1}^n X_j - p \geq \epsilon \right] \leq e^{-2 \epsilon^2 n} $$
 
-If we assum delta equal to 5% \todo{convert to latex} (a confidence of 95%), and N to
-the size of the test set, we know by solving the equation above that there is at most
-a ~3.64% difference between the experimental classification error and the real error of
-the model when the model is tested using the test set, i.e., I know that if I get a 19%
-classification error on the test set for a model, then this model has a real[^realdata]
-classification error lies between 16% and 22%
+Given that we only have a datapoint, we train only over a train set and not multiple, $n=1$,
+$X_j$ is the empirical error value we get from the test set, and considering a confidence
+of $1-\delta$ ($\delta = e^{-2 \epsilon^2 n}$), we can rewrite the equation above as:
+
+$$ N \geq \frac{1}{2\epsilon^2} ln\left(\frac{2}{\delta}\right) $$
+
+where $N$ is the size of the test set and $\delta$ a value of our choosing.
+
+If we assume $\delta = 5\%$ (a confidence of 95%), we know by solving the equation above
+that there is at most a ~3.64% difference between the experimental classification error
+and the real error of the model when the model is tested using the test set, i.e., I know
+that if I get a 19% classification error on the test set for a model, then this model has
+a real[^realdata] classification error lies between 16% and 22%
 
 [^realdata]: When I refer to "real" here I'm talking about all possible datapoints, music
   between the two genres, and not only the data that we have access to
@@ -76,9 +82,9 @@ As shown in the next section three different kinds of models were used to try to
 the problem, the second kind of model used was a neural network with a single hidden layer
 of arbitrary size. To select the right size on the number of neurons in the hidden network
 k-fold cross validation was used, for this the training set was divided in blocks of 14%
-of the dataset size (XXXX data points by block \todo{add number}). With a size of 14% it
-was possible to break the training set in six blocks, contrary to use 15% (the value used
-for the test set) which would only give five blocks to perform k-fold.
+of the dataset size (1297 data points by block). With a size of 14% it was possible to
+break the training set in six blocks, contrary to use 15% (the value used for the test
+set) which would only give five blocks to perform k-fold.
 
 An important point to note here is that the same test and training sets, as well as the
 "validation" sets used in cross validation, were the same for all models tested, i.e., the

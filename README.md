@@ -18,8 +18,8 @@ Once everything is installed you can run (remember `cd` to this directory first)
 rake compile
 ```
 
-And you should see now a pdf with `chemulator` for name.
+And you should see now a pdf with name `ml_hw1.pdf`.
 
 Enjoy ;)
 
-PS: If you want to know how does the underlying LaTeX file looks run `rake tex`
+PS: If you want to know how does the underlying LaTeX file looks like run `rake tex`.

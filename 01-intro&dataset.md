@@ -1,5 +1,3 @@
-\inlinetodo{Add class code to the title}
-
 # Introduction and Dataset #
 
 In the present paper I hope to show the process I followed to try to solve a binary

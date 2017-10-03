@@ -3,48 +3,42 @@
 ## Logistic Regression ##
 
 Solving logistic regression using Gradient Descent (GD) is very slow, see figure
-\todo{add figure of logistic-slow}, but we can use Stochastic Gradient Descent to find a
-non-optimal solution quickly and then find the best local minimum with GD,
-\todo{see second figure}.
+\ref{im07}, but we can use Stochastic Gradient Descent to find a
+non-optimal solution quickly and then find the best local minimum using GD,
+see figure\ref{im08}.
 
-\missingfigure{logistic-slow training and testing error}
+![Solving the logistic problem using Gradient Descent (GD) (all data is used to determine the
+direction of the gradient per epoch). GD proves to be slow \label{im07}](imgs/im07.eps)
 
-\missingfigure{both logistic1 and logistic2 training and testing errors}
-
-<!--
-   -plot 'training/logistic-slow.txt' using 'epoch':'train_classification_error' with line, 'training/logistic-slow.txt' using 'epoch':'test_classification_error' with line
-   cp training/logistic{1,}.txt
-   tail -n +3 training/logistic2.txt >> training/logistic.txt
-   -plot 'training/logistic1.txt' using 'epoch':'train_classification_error' with line, 'training/logistic1.txt' using 'epoch':'test_classification_error' with line
-   -plot 'training/logistic2.txt' using 'epoch':'train_classification_error' with line, 'training/logistic2.txt' using 'epoch':'test_classification_error' with line
-   -->
+![Solving the logistic problem using Stochastic Gradient Descent (SGD) with an initial
+batch size of 100, and switching to Gradient Descent (no batching) in epoch 30. Using this
+two step method is faster to find to a good solution with SGD and improve it to find the
+best possible solution using GD.
+\label{im08}](imgs/im08.eps)
 
 The lowest training error for logistic regression was ~15.9%, and the test error was ~19.1%.
 
 ## NN with a hidden layer of two neurons ##
 
-The results of training the NN can be seen in the figure \todo{add figure}. The values for
+The results of training the NN can be seen in the figure \ref{im09}. The values for
 the training and test errors are ~12.7% and ~17.6%, respectively.
 
-\missingfigure{training and testing error of nn 2-hidden}
-
-<!--plot 'training/hidden-2.txt' using 'train_classification_error' with line, 'training/hidden-2.txt' using 'test_classification_error' with line-->
+![Training and Test error for a NN with a hidden layer of two neurons.\label{im09}](imgs/im09.eps)
 
 ## Two Arbitrary NN models ##
 
 The results of training the NN model with two hidden layers, one of which is divided into
 two different regions (to separate learning of discrete and continous features) can be
-seen in figure \todo{add ref fig}. The values for training and test erors are ~13.0%
+seen in figure \ref{im10}. The values for training and test erors are ~13.0%
 and ~17.7%, respectively.
 
-\missingfigure{training and testing error of arbitrary discrete and continuous}
-<!--plot 'training/separated_discrete_continuous.txt' using 'train_classification_error' with line, 'training/separated_discrete_continuous.txt' using 'test_classification_error' with line-->
+![Training and Test error for the NN that separates the middle layer into two non-conected
+layers, one for the discrete features and the other continuous features.\label{im10}](imgs/im10.eps)
 
 The results of training the huge NN model (3 hidden layers) can be seen in figure
-\todo{add ref figure}. The values for training and test erors are ~7.0% and ~19.9%,
-\todo{add real values} respectively.
+\ref{im11}. The values for training and test erors are ~7.0% and ~19.9%,
+respectively.
 
-\missingfigure{training and testing error of huge}
-<!--plot 'training/huge.txt' using 'train_classification_error' with line, 'training/huge.txt' using 'test_classification_error' with line-->
+![Training and Test error for the "huge" NN.\label{im10}](imgs/im10.eps)
 
 <!-- vim:set filetype=markdown.pandoc : -->
