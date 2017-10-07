@@ -33,7 +33,7 @@ information for the nns to learn-->
 
 [^sidenote]: As a side note, applying log to the data gave strange results on training the
   first time I implemented it, many of the column data became NaN and made the learning
-  process ineffective, the Neural Nets just diverged and couldn give any prediction. To
+  process ineffective, the Neural Nets just diverged and couldn't give any prediction. To
   prevent NaN values on the data I decided to add one ($1$) before applying log, this
   little change prevented log to receive 0 as value and allowed me to continue with the
   training process without much trouble.
@@ -42,7 +42,7 @@ The discrete features in the dataset `time_signature` and `key` were converted i
 one-hot-vector representations. `time_signature` has 8 (from 0 to 7) possible values while
 `key` has 12 (from 0 to 11) possible values. The resulting vector of discrete features for
 each datapoint has size 21 (8 + 12 + 1, 1 value for the `mode` binary feature). For each
-of the 27 continuous features an additional feature was created, the additional features
+of the 27 continuous features an additional feature was created. The additional features
 were the result of applying log to each column. A normalization step was performed for
 each of the 54 continuous resulting features. The total of features used per datapoint
 was 75 (21 discrete and 54 continuous).
@@ -55,14 +55,15 @@ The original 9269 datapoints were distributed randomly in:
 - and, Training set. Size 7879, 85% remaining of 9269
 
 The value of 15% was selected as a good compromise between the scare total dapoints for
-the problem, and a (not so) descent precision error. I refer here about precision in the
+the problem, and a (not so) decent precision error. <!--TODO: what the heck I meant here?-->
+I refer here about precision in the
 context of Chernoff bounds. Remember that the additive form of the Chernoff bounds are
 given by the equation:
 
 $$ P\left[\frac{1}{n} \sum_{j=1}^n X_j - p \geq \epsilon \right] \leq e^{-2 \epsilon^2 n} $$
 
-Given that we only have a datapoint, we train only over a train set and not multiple, $n=1$,
-$X_j$ is the empirical error value we get from the test set, and considering a confidence
+Given that we only have a dataset, we train only over a train set and not multiple, $n=1$.
+$X_j$ is the empirical error we get from the test set. And considering a confidence
 of $1-\delta$ ($\delta = e^{-2 \epsilon^2 n}$), we can rewrite the equation above as:
 
 $$ N \geq \frac{1}{2\epsilon^2} ln\left(\frac{2}{\delta}\right) $$
@@ -73,9 +74,9 @@ If we assume $\delta = 5\%$ (a confidence of 95%), we know by solving the equati
 that there is at most a ~3.64% difference between the experimental classification error
 and the real error of the model when the model is tested using the test set, i.e., I know
 that if I get a 19% classification error on the test set for a model, then this model has
-a real[^realdata] classification error lies between 16% and 22%
+a real[^realdata] classification error that lies between 16% and 22%
 
-[^realdata]: When I refer to "real" here I'm talking about all possible datapoints, music
+[^realdata]: When I refer to "real" here I'm talking about all possible datapoints, songs
   between the two genres, and not only the data that we have access to
 
 As shown in the next section three different kinds of models were used to try to solve

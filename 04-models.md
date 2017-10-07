@@ -26,7 +26,7 @@ validation errors.
 But from the figure \ref{im05}, it is clear that the models memorize well the training data as
 more neurons are used in the hidden layer. It must be noted that no model seem to be able
 to reduce its training error below 6.5%, this is because I decided to stop the training
-process of any model when it went below 8.5%, the 6.5% threshold is just apparent. If a
+process of any model when it went below 8.5%, the 6.5% threshold is just artificial. If a
 model with 60 neurons in the hidden layer were to be further trained, ignoring the 8.5%
 threshold, it will get very low scores. I selected the 8.5% threshold because all NNs
 that I tried in earlier attempts seemed to not improve after going lower than 8.5%
@@ -39,15 +39,15 @@ models, those with less overfitting, are the models with 1, 2, 3 and 4 neurons i
 hidden layer.
 
 The efect of the 8.5% threshold can be seen in the number of epochs the model was trained
-before it was stopped, see figure \ref{img06}. For big models ($neurons > 40$) the effect in the number of epochs
+before it was stopped, see figure \ref{im06}. For big models ($neurons > 40$) the effect in the number of epochs
 necessary to make the NN learn the data is very small, just about 10-12 epochs. The
-threshold never affects models that cannot memorize enough, those with a small number of
+threshold (8.5%) never affects models that cannot memorize enough, those with a small number of
 neurons ($neurons < 9$) in the hidden layer, the training process is stopped for these
 models when they stabilize enough.
 
-Models that stabilize and don't seem to memorize much the training that should be
+Models that stabilize and don't seem to memorize much should be
 considered the best, therefore the best model could either have 2, 3 or 4 neurons in the
-hidden layer. Given all the above the best model to select seems to be a NN with 4 neurons
+hidden layer. Given all the above the best model to select seems to be a NN with 2 neurons
 in the hidden layer.
 
 ![K-fold Cross Validation Error on number of neurons in hidden layer, no aparent model is better than the rest\label{im04}](imgs/im04.eps)
@@ -65,7 +65,7 @@ logistic regression, in fact if we take an slightly smaller model, say one singl
 in the hidden layer, then the model would be almost logistic regression (a $tanh$ function
 is in the middle of the sum of input features and the logistic function). The best working
 NN model found is almost identical to logistic regression, though the NN model seem to
-perform better than logistic regression (see Section Training) but the error between the
+perform better than logistic regression (see Section \ref{training}) but the error between the
 two models is still between the error bounds (-3.7%,+3.7%).
 
 I chosed only two models, different to logistic regression and NN with a hidden layer, to

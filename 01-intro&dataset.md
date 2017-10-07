@@ -11,7 +11,7 @@ and the latter with a total of 4334. The error used in the analysis of the data 
 in the paper is accuracy, or more precisely the "inverse" of accuracy, namely $error = 1 - acc$,
 and not any other measures like f1-score, recall or sensitivity, to name a few. No
 measures different to accuracy are required here given that the data is almost evenly
-distributed over to classes of similar sizes.
+distributed over two classes of similar sizes.
 
 [^urldataset]: The dataset can be found in
   <https://labrosa.ee.columbia.edu/millionsong/blog/11-2-28-deriving-genre-dataset>

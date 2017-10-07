@@ -29,16 +29,16 @@ the training and test errors are ~12.7% and ~17.6%, respectively.
 
 The results of training the NN model with two hidden layers, one of which is divided into
 two different regions (to separate learning of discrete and continous features) can be
-seen in figure \ref{im10}. The values for training and test erors are ~13.0%
+seen in figure \ref{im10}. The values for training and test errors are ~13.0%
 and ~17.7%, respectively.
 
 ![Training and Test error for the NN that separates the middle layer into two non-conected
 layers, one for the discrete features and the other continuous features.\label{im10}](imgs/im10.eps)
 
 The results of training the huge NN model (3 hidden layers) can be seen in figure
-\ref{im11}. The values for training and test erors are ~7.0% and ~19.9%,
+\ref{im11}. The values for training and test errors are ~7.0% and ~19.9%,
 respectively.
 
-![Training and Test error for the "huge" NN.\label{im10}](imgs/im10.eps)
+![Training and Test error for the "huge" NN.\label{im11}](imgs/im11.eps)
 
 <!-- vim:set filetype=markdown.pandoc : -->
